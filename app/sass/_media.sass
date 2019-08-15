@@ -1,0 +1,159 @@
+@import "vars"
+
+
+/*==========  Desktop First  ==========*/
+
+// до 1200px
++media-breakpoint-down(lg)
+  #contact
+    .logo
+      margin-top: 25%
+    h3
+      margin-top: 35%
+
+// до 992px
++media-breakpoint-down(md)
+  .footer
+    .rightFooter, .leftFooter
+      white-space: normal
+      padding: 40px 4%
+
+  .waxomRealization
+    height: 750px
+    .photosBrowserRight, .photosBrowserLeft
+      display: none
+      padding-left: 0
+    p
+      margin-bottom: 30px
+
+  #contact
+    padding-left: 5%
+    padding-right: 5%
+    .logo
+      margin-top: 20%
+    h3
+      margin-top: 30%
+    .dribbleWidgetFooter
+      display: none
+  .recentPosts
+    padding: 20px 0 20px
+  .arrows
+    display: none
+
+  nav ul a
+  	margin-left: 10px
+
+  .counters
+    height: 230px
+    img
+      margin-top: 35px
+      margin-bottom: 15px
+    h6
+      font-size: 30px
+      margin-bottom: 5px
+    p
+      font-size: 10px
+      margin-bottom: 5px
+
+  .mobileVertion
+    h2
+      margin-top: 40px
+    ul
+      margin-bottom: 40px
+
+// до 768px
++media-breakpoint-down(sm)
+  .waxomRealization
+    height: 260px
+    padding-top: 40px
+    .photosBrowserCenter
+      display: none
+
+  nav
+  	display: none
+
+  .gradient
+    height: 230px
+    .button
+      margin-top: 10px
+
+  #contact hr
+    width: 240px
+
+  .footer
+    .rightFooter
+      text-align: left
+      padding-top: 70px
+      padding-bottom: 10px
+      font-size: 12px
+    .leftFooter
+      padding-top: 30px
+      font-size: 12px
+
+
+// до 576px
++media-breakpoint-down(xs)
+  .mobileVertion ul img
+    margin-left: 0
+    margin-right: 5px
+
+  #contact hr
+    display: none
+  .partners
+    display: none
+
+
+/*==========  Mobile First  ==========*/
+
+// от 576px
++media-breakpoint-up(sm)
+
+
+// от 768px
++media-breakpoint-up(md)
+  #contact
+    p
+      font-size: 14px
+    h3
+      font-size: 18px
+    h6
+      font-size: 12px
+    hr
+      width: 155px
+  .latestProjects
+    .col-md-6
+      padding: 0
+
+
+
+// от 992px
++media-breakpoint-up(lg)
+  .tile
+    padding-left: 10%
+    padding-bottom: 5%
+  .s-recentPosts
+    .col-lg-6
+      padding-left: 5%
+      padding-bottom: 3%
+  #contact
+    padding-left: 10%
+    hr
+      width: 130px
+
+// от 1200px
++media-breakpoint-up(xl)
+  #contact
+    padding: 0
+    p
+      font-size: 16px
+    h3
+      font-size: 24px
+    h6
+      font-size: 14px
+    hr
+      width: 270px
+  .tile
+    padding: 0
+  .s-recentPosts
+    .col-lg-6
+      padding: 0
