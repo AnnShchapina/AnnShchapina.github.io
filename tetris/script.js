@@ -23,65 +23,29 @@ for (let y=18; y>0; y--) {
 }
 
 let x = 5; y = 15;
-let mainArr = [
-  //палка
-  [
-    [0, 1],
-    [0, 2],
-    [0, 3]
-  ],
-
-  //квадрат
-  [
-    [1, 0],
-    [0, 1],
-    [1, 1]
-  ],
-
-  // буква L
-  [
-    [1, 0],
-    [0, 1],
-    [0, 2]
-  ],
-
-  // зеркальная буква L
-  [
-    [1, 0],
-    [1, 1],
-    [1, 2]
-  ],
-
-  // буква Z
-  [
-    [1, 0],
-    [-1, 1],
-    [0, 1]
-  ],
-
-  // зеркальная буква Z
-  [
-    [1, 0],
-    [1, 1],
-    [2, 1]
-  ],
-
-  // перевернутая T
-  [
-    [1, 0],
-    [2, 0],
-    [1, 1]
-  ]
-]
+let mainArr=[[[0,1],[0,2],[0,3],[[-1,1],[0,0],[1,-1],[2,-2],],[[1,-1],[0,0],[-1,1],
+[-2,2],],[[-1,1],[0,0],[1,-1],[2,-2],],[[1,-1],[0,0],[-1,1],[-2,2],],],[[1,0],[0,1],
+[1,1],[[0,0],[0,0],[0,0],[0,0],],[[0,0],[0,0],[0,0],[0,0],],[[0,0],[0,0],[0,0],[0,0],
+],[[0,0],[0,0],[0,0],[0,0],],],[[1,0],[0,1],[0,2],[[0,0],[-1,1],[1,0],[2,-1],],[[1,-1]
+,[1,-1],[-1,0],[-1,0],],[[-1,0],[0,-1],[2,-2],[1,-1],],[[0,-1],[0,-1],[-2,0],[-2,0],],]
+,[[1,0],[1,1],[1,2],[[0,0],[0,0],[1,-1],[-1,-1],],[[0,-1],[-1,0],[-2,1],[1,0],],[[2,0],
+[0,0],[1,-1],[1,-1],],[[-2,0],[1,-1],[0,0],[-1,1],],],[[1,0],[-1,1],[0,1],[[0,-1],[-1,0],
+[2,-1],[1,0],],[[0,0],[1,-1],[-2,0],[-1,-1],],[[0,-1],[-1,0],[2,-1],[1,0],],[[0,0],[1,-1],
+[-2,0],[-1,-1],],],[[1,0],[1,1],[2,1],[[2,-1],[0,0],[1,-1],[-1,0],],[[-2,0],[0,-1],[-1,0],
+[1,-1],],[[2,-1],[0,0],[1,-1],[-1,0],],[[-2,0],[0,-1],[-1,0],[1,-1],],],[[1,0],[2,0],[1,1],
+[[1,-1],[0,0],[0,0],[0,0],],[[0,0],[-1,0],[-1,0],[1,-1],],[[1,-1],[1,-1],[1,-1],[0,0],],
+[[-2,0],[0,-1],[0,-1],[-1,-1],]]]
 
 let currentFigure = 0;
 let figureBody = 0;
+let rotate = 1;
 
 function create() {
   function getRandom() {
     return Math.round(Math.random()*(mainArr.length-1))
   }
 
+  rotate = 1;
   currentFigure = getRandom();
 
   figureBody = [
@@ -139,7 +103,7 @@ function move() {
 
 let interval = setInterval(() => {
   move();
-}, 300);
+}, 400);
 
 
 window.addEventListener('keydown', function (e) {
@@ -177,13 +141,87 @@ window.addEventListener('keydown', function (e) {
       }
     }
   }
-
+  //стрелка влево
   if (e.keyCode == 37) {
     getNewState(-1);
+  //стрелка вправо
   } else if (e.keyCode == 39) {
     getNewState(1);
+  //стрелка вниз
   } else if (e.keyCode == 40) {
     move();
-  }
+  //стрелка вверх
+  } else if (e.keyCode == 38) {
+    flag = true;
 
+           let figureNew = [
+               document.querySelector(`[posX = "${+coordinates1[0] + mainArr[currentFigure][rotate + 2][0][0]}"][posY = "${
+               +coordinates1[1] + mainArr[currentFigure][rotate + 2][0][1]}"]`),
+               document.querySelector(`[posX = "${+coordinates2[0] + mainArr[currentFigure][rotate + 2][1][0]}"][posY = "${
+               +coordinates2[1] + mainArr[currentFigure][rotate + 2][1][1]}"]`),
+               document.querySelector(`[posX = "${+coordinates3[0] + mainArr[currentFigure][rotate + 2][2][0]}"][posY = "${
+               +coordinates3[1] + mainArr[currentFigure][rotate + 2][2][1]}"]`),
+               document.querySelector(`[posX = "${+coordinates4[0] + mainArr[currentFigure][rotate + 2][3][0]}"][posY = "${
+               +coordinates4[1] + mainArr[currentFigure][rotate + 2][3][1]}"]`),
+           ];
+
+           for (let i=0; i<figureNew.length; i++) {
+               if (!figureNew[i] || figureNew[i].classList.contains('set')) {
+                   flag = false;
+               }
+           }
+
+           if (flag == true) {
+               for (let i = 0; i<figureBody.length; i++) {
+                   figureBody[i].classList.remove('figure');
+               }
+
+               figureBody = figureNew;
+
+               for (let i = 0; i<figureBody.length; i++) {
+                   figureBody[i].classList.add('figure');
+               }
+
+               if (rotate < 4) {
+                   rotate++;
+               } else {
+                   rotate = 1;
+               }
+           }
+       }
+
+
+  /*  flag = true;
+
+    let figureNew = [
+      document.querySelector(`[posX = "${+coordinates1[0] + mainArr[currentFigure][rotate +2][0][0]}"][posY = "${coordinates1[1] + mainArr[currentFigure][rotate +2][0][1]}"]`),
+      document.querySelector(`[posX = "${+coordinates2[0] + mainArr[currentFigure][rotate +2][1][0]}"][posY = "${coordinates2[1] + mainArr[currentFigure][rotate +2][1][1]}"]`),
+      document.querySelector(`[posX = "${+coordinates3[0] + mainArr[currentFigure][rotate +2][2][0]}"][posY = "${coordinates3[1] + mainArr[currentFigure][rotate +2][2][1]}"]`),
+      document.querySelector(`[posX = "${+coordinates4[0] + mainArr[currentFigure][rotate +2][3][0]}"][posY = "${coordinates4[1] + mainArr[currentFigure][rotate +2][3][1]}"]`),
+    ];
+
+    for (let i = 0; i < figureNew.length; i++) {
+      if(!figureNew[i] || figureNew[i].classList.contains('set')) {
+        flag = false;
+      }
+    }
+
+    if (flag == true) {
+      for (let i = 0; i < figureBody.length; i++) {
+        figureBody[i].classList.remove('figure');
+      }
+
+      figureBody = figureNew;
+
+      for (let i = 0; i < figureBody.length; i++) {
+        figureBody[i].classList.add('figure');
+      }
+
+      if (rotate < 4) {
+        rotate++;
+      } else {
+        rotate = 1;
+      }
+    }
+  }*/
 })
