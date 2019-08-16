@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+body {
+  background-color: #92d4f7;
+}
+
+/* видимая часть тетриса */
+.main {
+  margin: 50px auto;
+  position: relative;
+  overflow: hidden; /* скрывает видимость области вокруг объекта */
+  width: 500px;
+  height: 700px;
+  border: 1px solid #000;
+  background-color: #fff;
+}
+
+/* тетрис целиком, и видимая часть и не видимая */
+.tetris {
+  width: 500px;
+  height: 900px;
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  position: absolute;
+  bottom: 0;
+  background-color: #fff;
+}
+
+/* ячейки */
+.excel {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+}
+
+.figure, .set {
+  background-color: #1e488c;
+}
