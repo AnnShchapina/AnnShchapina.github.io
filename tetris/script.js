@@ -1,6 +1,7 @@
 let tetris = document.createElement('div');
 tetris.classList.add('tetris');
 
+
 for (let i=1; i<181; i++) {
   let excel = document.createElement('div');
   excel.classList.add('excel');
@@ -83,7 +84,6 @@ function create() {
 
   currentFigure = getRandom();
 
-
   figureBody = [
     document.querySelector(`[posX = "${x}"][posY = "${y}"]`),
     document.querySelector(`[posX = "${x + mainArr[currentFigure][0][0]}"][posY = "${y + mainArr[currentFigure][0][1]}"]`),
@@ -91,7 +91,7 @@ function create() {
     document.querySelector(`[posX = "${x + mainArr[currentFigure][2][0]}"][posY = "${y + mainArr[currentFigure][2][1]}"]`)
   ]
 
-  for (let i=0; i<figureBody.length; i++) {
+  for (let i = 0; i < figureBody.length; i++) {
     figureBody[i].classList.add('figure');
   }
 
@@ -106,6 +106,7 @@ function move() {
     [figureBody[2].getAttribute('posX'), figureBody[2].getAttribute('posY')],
     [figureBody[3].getAttribute('posX'), figureBody[3].getAttribute('posY')],
   ];
+
 
   for (let i = 0; i < coordinates.length; i++) {
     if (coordinates[i][1] == 1 || document.querySelector(`[posX = "${coordinates[i][0]}"][posY = "${coordinates[i][1]-1}"]`).classList.contains('set')) {
@@ -123,7 +124,7 @@ function move() {
       document.querySelector(`[posX = "${coordinates[1][0]}"][posY = "${coordinates[1][1]-1}"]`),
       document.querySelector(`[posX = "${coordinates[2][0]}"][posY = "${coordinates[2][1]-1}"]`),
       document.querySelector(`[posX = "${coordinates[3][0]}"][posY = "${coordinates[3][1]-1}"]`),
-    ]
+    ];
     for (let i = 0; i < figureBody.length; i++) {
       figureBody[i].classList.add('figure');
     }
@@ -136,7 +137,7 @@ function move() {
   }
 }
 
-let setInterval = setInterval(() => {
+let interval = setInterval(() => {
   move();
 }, 300);
 
