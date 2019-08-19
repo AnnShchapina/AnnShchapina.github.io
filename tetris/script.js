@@ -97,6 +97,19 @@ function move() {
       figureBody[i].classList.remove('figure');
       figureBody[i].classList.add('set');
     }
+    for (let i = 1; i < 15; i++) {
+      let count = 0;
+      for (let k = 1; k < 11; k++) {
+        if (document.querySelector(`[posX = "${k}"][posY = "${i}"]`).classList.contains('set')) {
+          count++;
+          if (count == 10) {
+            for (let m = 0; m < 11; m++) {
+              document.querySelector(`[posX = "${m}"][posY = "${i}"]`).classList.remove('set');
+            }
+          }
+        }
+      }
+    }
     create();
   }
 }
@@ -154,74 +167,40 @@ window.addEventListener('keydown', function (e) {
   } else if (e.keyCode == 38) {
     flag = true;
 
-           let figureNew = [
-               document.querySelector(`[posX = "${+coordinates1[0] + mainArr[currentFigure][rotate + 2][0][0]}"][posY = "${
-               +coordinates1[1] + mainArr[currentFigure][rotate + 2][0][1]}"]`),
-               document.querySelector(`[posX = "${+coordinates2[0] + mainArr[currentFigure][rotate + 2][1][0]}"][posY = "${
-               +coordinates2[1] + mainArr[currentFigure][rotate + 2][1][1]}"]`),
-               document.querySelector(`[posX = "${+coordinates3[0] + mainArr[currentFigure][rotate + 2][2][0]}"][posY = "${
-               +coordinates3[1] + mainArr[currentFigure][rotate + 2][2][1]}"]`),
-               document.querySelector(`[posX = "${+coordinates4[0] + mainArr[currentFigure][rotate + 2][3][0]}"][posY = "${
-               +coordinates4[1] + mainArr[currentFigure][rotate + 2][3][1]}"]`),
-           ];
+   let figureNew = [
+       document.querySelector(`[posX = "${+coordinates1[0] + mainArr[currentFigure][rotate + 2][0][0]}"][posY = "${
+       +coordinates1[1] + mainArr[currentFigure][rotate + 2][0][1]}"]`),
+       document.querySelector(`[posX = "${+coordinates2[0] + mainArr[currentFigure][rotate + 2][1][0]}"][posY = "${
+       +coordinates2[1] + mainArr[currentFigure][rotate + 2][1][1]}"]`),
+       document.querySelector(`[posX = "${+coordinates3[0] + mainArr[currentFigure][rotate + 2][2][0]}"][posY = "${
+       +coordinates3[1] + mainArr[currentFigure][rotate + 2][2][1]}"]`),
+       document.querySelector(`[posX = "${+coordinates4[0] + mainArr[currentFigure][rotate + 2][3][0]}"][posY = "${
+       +coordinates4[1] + mainArr[currentFigure][rotate + 2][3][1]}"]`),
+   ];
 
-           for (let i=0; i<figureNew.length; i++) {
-               if (!figureNew[i] || figureNew[i].classList.contains('set')) {
-                   flag = false;
-               }
-           }
+   for (let i=0; i<figureNew.length; i++) {
+       if (!figureNew[i] || figureNew[i].classList.contains('set')) {
+           flag = false;
+       }
+   }
 
-           if (flag == true) {
-               for (let i = 0; i<figureBody.length; i++) {
-                   figureBody[i].classList.remove('figure');
-               }
-
-               figureBody = figureNew;
-
-               for (let i = 0; i<figureBody.length; i++) {
-                   figureBody[i].classList.add('figure');
-               }
-
-               if (rotate < 4) {
-                   rotate++;
-               } else {
-                   rotate = 1;
-               }
-           }
+   if (flag == true) {
+       for (let i = 0; i<figureBody.length; i++) {
+           figureBody[i].classList.remove('figure');
        }
 
+       figureBody = figureNew;
 
-  /*  flag = true;
+       for (let i = 0; i<figureBody.length; i++) {
+           figureBody[i].classList.add('figure');
+       }
 
-    let figureNew = [
-      document.querySelector(`[posX = "${+coordinates1[0] + mainArr[currentFigure][rotate +2][0][0]}"][posY = "${coordinates1[1] + mainArr[currentFigure][rotate +2][0][1]}"]`),
-      document.querySelector(`[posX = "${+coordinates2[0] + mainArr[currentFigure][rotate +2][1][0]}"][posY = "${coordinates2[1] + mainArr[currentFigure][rotate +2][1][1]}"]`),
-      document.querySelector(`[posX = "${+coordinates3[0] + mainArr[currentFigure][rotate +2][2][0]}"][posY = "${coordinates3[1] + mainArr[currentFigure][rotate +2][2][1]}"]`),
-      document.querySelector(`[posX = "${+coordinates4[0] + mainArr[currentFigure][rotate +2][3][0]}"][posY = "${coordinates4[1] + mainArr[currentFigure][rotate +2][3][1]}"]`),
-    ];
+       if (rotate < 4) {
+           rotate++;
+       } else {
+           rotate = 1;
+       }
+   }
+  }
 
-    for (let i = 0; i < figureNew.length; i++) {
-      if(!figureNew[i] || figureNew[i].classList.contains('set')) {
-        flag = false;
-      }
-    }
-
-    if (flag == true) {
-      for (let i = 0; i < figureBody.length; i++) {
-        figureBody[i].classList.remove('figure');
-      }
-
-      figureBody = figureNew;
-
-      for (let i = 0; i < figureBody.length; i++) {
-        figureBody[i].classList.add('figure');
-      }
-
-      if (rotate < 4) {
-        rotate++;
-      } else {
-        rotate = 1;
-      }
-    }
-  }*/
-})
+});
