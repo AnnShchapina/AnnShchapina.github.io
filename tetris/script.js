@@ -1,3 +1,25 @@
+let overlay = document.querySelector('.overlay');
+let modal = document.querySelector('.modal');
+let speed = 0;
+
+modal.addEventListener('click', function (e) {
+  if(e.target.classList.contains('easy')) {
+    speed = 1000;
+  } else if(e.target.classList.contains('normal')) {
+      speed = 500;
+  } else if(e.target.classList.contains('hard')) {
+      speed = 200;
+  }
+
+  if (e.target.classList.contains('button')) {
+    modal.style.display = 'none';
+    overlay.style.display = 'none';
+    startGame();
+  }
+})
+
+function startGame() {
+
 let tetris = document.createElement('div');
 tetris.classList.add('tetris');
 
@@ -62,61 +84,87 @@ function create() {
 }
 create();
 
+let score = 0;
+let input = document.getElementsByTagName('input')[0];
+input.value = `Ваши очки: ${score}`;
+
 function move() {
-  let moveFlag = true;
-  let coordinates = [
-    [figureBody[0].getAttribute('posX'), figureBody[0].getAttribute('posY')],
-    [figureBody[1].getAttribute('posX'), figureBody[1].getAttribute('posY')],
-    [figureBody[2].getAttribute('posX'), figureBody[2].getAttribute('posY')],
-    [figureBody[3].getAttribute('posX'), figureBody[3].getAttribute('posY')],
-  ];
-
-
-  for (let i = 0; i < coordinates.length; i++) {
-    if (coordinates[i][1] == 1 || document.querySelector(`[posX = "${coordinates[i][0]}"][posY = "${coordinates[i][1]-1}"]`).classList.contains('set')) {
-      moveFlag = false;
-      break;
-    }
-  }
-
-  if (moveFlag) {
-    for (let i = 0; i < figureBody.length; i++) {
-      figureBody[i].classList.remove('figure');
-    }
-    figureBody = [
-      document.querySelector(`[posX = "${coordinates[0][0]}"][posY = "${coordinates[0][1]-1}"]`),
-      document.querySelector(`[posX = "${coordinates[1][0]}"][posY = "${coordinates[1][1]-1}"]`),
-      document.querySelector(`[posX = "${coordinates[2][0]}"][posY = "${coordinates[2][1]-1}"]`),
-      document.querySelector(`[posX = "${coordinates[3][0]}"][posY = "${coordinates[3][1]-1}"]`),
+    let moveFlag = true;
+    let coordinates = [
+      [figureBody[0].getAttribute('posX'), figureBody[0].getAttribute('posY')],
+      [figureBody[1].getAttribute('posX'), figureBody[1].getAttribute('posY')],
+      [figureBody[2].getAttribute('posX'), figureBody[2].getAttribute('posY')],
+      [figureBody[3].getAttribute('posX'), figureBody[3].getAttribute('posY')],
     ];
-    for (let i = 0; i < figureBody.length; i++) {
-      figureBody[i].classList.add('figure');
+
+
+    for (let i = 0; i < coordinates.length; i++) {
+      if (coordinates[i][1] == 1 || document.querySelector(`[posX = "${coordinates[i][0]}"][posY = "${coordinates[i][1]-1}"]`).classList.contains('set')) {
+        moveFlag = false;
+        break;
+      }
     }
-  } else {
-    for (let i = 0; i < figureBody.length; i++) {
-      figureBody[i].classList.remove('figure');
-      figureBody[i].classList.add('set');
-    }
-    for (let i = 1; i < 15; i++) {
-      let count = 0;
-      for (let k = 1; k < 11; k++) {
-        if (document.querySelector(`[posX = "${k}"][posY = "${i}"]`).classList.contains('set')) {
-          count++;
-          if (count == 10) {
-            for (let m = 0; m < 11; m++) {
-              document.querySelector(`[posX = "${m}"][posY = "${i}"]`).classList.remove('set');
+
+    if (moveFlag) {
+      for (let i = 0; i < figureBody.length; i++) {
+        figureBody[i].classList.remove('figure');
+      }
+      figureBody = [
+        document.querySelector(`[posX = "${coordinates[0][0]}"][posY = "${coordinates[0][1]-1}"]`),
+        document.querySelector(`[posX = "${coordinates[1][0]}"][posY = "${coordinates[1][1]-1}"]`),
+        document.querySelector(`[posX = "${coordinates[2][0]}"][posY = "${coordinates[2][1]-1}"]`),
+        document.querySelector(`[posX = "${coordinates[3][0]}"][posY = "${coordinates[3][1]-1}"]`),
+      ];
+      for (let i = 0; i < figureBody.length; i++) {
+        figureBody[i].classList.add('figure');
+      }
+    } else {
+      for (let i = 0; i < figureBody.length; i++) {
+        figureBody[i].classList.remove('figure');
+        figureBody[i].classList.add('set');
+      }
+      for (let i = 1; i < 15; i++) {
+        let count = 0;
+        for (let k = 1; k < 11; k++) {
+          if (document.querySelector(`[posX = "${k}"][posY = "${i}"]`).classList.contains('set')) {
+            count++;
+            if (count == 10) {
+              score += 10;
+              input.value = `Ваши очки: ${score}`;
+              for (let m = 1; m < 11; m++) {
+                document.querySelector(`[posX = "${m}"][posY = "${i}"]`).classList.remove('set');
+              }
+              let set = document.querySelectorAll('.set');
+              let newSet = [];
+              for (let s = 0; s < set.length; s++) {
+                let setCoordinates = [set[s].getAttribute('posX'), set[s].getAttribute('posY')];
+                if (setCoordinates[1] > i) {
+                  set[s].classList.remove('set');
+                  newSet.push(document.querySelector(`[posX = "${setCoordinates[0]}"][posY = "${setCoordinates[1]-1}"]`));
+                }
+              }
+              for (let a = 0; a < newSet.length; a++) {
+                newSet[a].classList.add('set');
+              }
+              i--;
             }
           }
         }
       }
+      for (let n = 1; n < 11; n++) {
+        if (document.querySelector(`[posX = "${n}"][posY = "${15}"]`).classList.contains('set')) {
+          clearInterval(interval);
+          alert(`Игра окончена. Ваши очки: ${score}`);
+          break;
+        }
+      }
+      create();
     }
-    create();
-  }
 }
 
 let interval = setInterval(() => {
   move();
-}, 400);
+}, speed);
 
 
 window.addEventListener('keydown', function (e) {
@@ -202,5 +250,5 @@ window.addEventListener('keydown', function (e) {
        }
    }
   }
-
-});
+})
+}
