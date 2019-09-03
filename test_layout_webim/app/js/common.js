@@ -1,5 +1,4 @@
+let a = 1;
+
 $(function() {
-
-	// Custom JS
-
 });
