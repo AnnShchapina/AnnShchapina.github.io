@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="yandex" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 40 40" style="enable-background:new 0 0 40 40;" xml:space="preserve">
 <style type="text/css">
 	.st0{clip-path:url(#SVGID_2_);fill:url(#SVGID_3_);}
@@ -19,7 +19,7 @@
 	<clipPath id="SVGID_2_">
 		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
 	</clipPath>
-	
+
 		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-87.0856" y1="140" x2="-86.9189" y2="140" gradientTransform="matrix(219.5379 -11.5055 10.3552 243.9254 17670.5703 -35130.5586)">
 		<stop  offset="0" style="stop-color:#6F00F9"/>
 		<stop  offset="1" style="stop-color:#69BAC0"/>

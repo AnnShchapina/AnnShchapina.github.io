@@ -8,10 +8,11 @@
   display: grid
 
 .main-header
-  background-color: $gray
-  position: relative
+  height: 112px
 
 .header-content
+  background-color: $gray
+  position: relative
   text-align: left
   padding: 83px 35% 0 $gutter
   h1
@@ -165,7 +166,7 @@ section
     line-height: 24px
     letter-spacing: 0.4px
   p
-    color: #393e6b
+    color: $dark
     font-family: Ubuntu-grid
     font-size: 18px
     font-weight: 400
@@ -192,15 +193,55 @@ section
     background-color: #3b4269
   .icon
     display: block
-    margin-bottom: -45px
+    margin-bottom: -50px
 
 .social-channels
+  h3
+    color: $dark
+    font-family: Ubuntu-grid
+    font-size: 18px
+    font-weight: 400
+    line-height: 24px
+    margin: 0 0 85px 0
   .container
     grid-template-columns: repeat(3, 1fr)
-    grid-auto-rows: 100px
-    grid-column-gap: 0
+    grid-template-rows: 100px 100px 100px
+    grid-auto-flow: column
     a
       margin: 0
+      padding-left: 60px
+      color: #0da088
+      font-family: Ubuntu-light-grid
+      font-size: 18px
+      font-weight: 400
+      line-height: 24px
+      text-decoration: underline
+    .icon-social
+      display: block
+      margin-bottom: -40px
+
+.main-footer
+  padding: 40px 90px
+  font-family: Ubuntu-light-grid
+  height: 283px
+  background-color: $dark
+  color: #fff
+  .container
+    grid-template-columns: 1fr 2fr 1fr
+    span
+      color: #c0c3d3
+      display: inline-block
+      margin-bottom: 15px
+    p
+      font-size: 20px
+      margin: 0
+    .number
+      font-size: 28px
+      margin-bottom: 15px
+    a
+      color: #fff
+      text-decoration: none
+
 
 
 
