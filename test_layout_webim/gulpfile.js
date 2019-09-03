@@ -2,27 +2,25 @@ var syntax = 'sass'; // Syntax: sass or scss;
 
 var gulp = require('gulp'), // Подключаем Gulp
     sass = require('gulp-sass'), //Подключаем Sass пакет
-  svgstore = require('gulp-svgstore');
-  svgmin = require('gulp-svgmin');
-  path = require('path');
-  browserSync = require('browser-sync'),
-  concat = require('gulp-concat'),
-  uglify = require('gulp-uglify'),
-  cleancss = require('gulp-clean-css'),
-  rename = require('gulp-rename'),
-  autoprefixer = require('gulp-autoprefixer'),
-  notify = require("gulp-notify"),
+    svgstore = require('gulp-svgstore');
+    svgmin = require('gulp-svgmin');
+    path = require('path');
+    browserSync = require('browser-sync'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    cleancss = require('gulp-clean-css'),
+    rename = require('gulp-rename'),
+    autoprefixer = require('gulp-autoprefixer'),
+    notify = require("gulp-notify");
 
-gulp.task('browser-sync', function() {
- browserSync({
-  server: {
-   baseDir: 'app'
-  },
-  notify: false,
-  // open: false,
-  // online: false, // Work Offline Without Internet Connection
-  // tunnel: true, tunnel: "projectname", // Demonstration page: http://projectname.localtunnel.me
- })
+gulp.task('serve', function() {
+ browserSync.init({
+        server: "app"
+    });
+
+  gulp.watch('app/'+syntax+'/**/*.'+syntax+'', gulp.series('styles'));
+  gulp.watch(['libs/**/*.js', 'app/js/common.js'], gulp.series('js'));
+  gulp.watch("app/*.html").on('change', browserSync.reload);
 });
 
 gulp.task('styles', function() {
@@ -35,14 +33,17 @@ gulp.task('styles', function() {
  .pipe(browserSync.stream())
 });
 
-gulp.task('sass', function() {
-	return gulp.src('app/sass/*.sass')
-	.pipe(sass({outputStyle: 'expand'}).on("error", notify.onError()))
-	.pipe(rename({suffix: '.min', prefix : ''}))
-	.pipe(autoprefixer(['last 15 versions']))
-	.pipe(cleanCSS()) // Опционально, закомментировать при отладке
-	.pipe(gulp.dest('app/css'))
-	.pipe(browserSync.reload({stream: true}));
+
+gulp.task('js', function() {
+ return gulp.src([
+  'app/libs/jquery/dist/jquery.min.js',
+  'app/js/common.js', // Always at the end
+  ])
+
+ .pipe(concat('scripts.min.js'))
+ // .pipe(uglify()) // Mifify js (opt.)
+ .pipe(gulp.dest('app/js'))
+ .pipe(browserSync.reload({ stream: true }))
 });
 
 gulp.task('svgstore', function () {
@@ -63,23 +64,4 @@ gulp.task('svgstore', function () {
         .pipe(gulp.dest('app/images'));
 });
 
-
-gulp.task('js', function() {
- return gulp.src([
-  'app/libs/jquery/dist/jquery.min.js',
-  'app/js/common.js', // Always at the end
-  ])
-
- .pipe(concat('scripts.min.js'))
- // .pipe(uglify()) // Mifify js (opt.)
- .pipe(gulp.dest('app/js'))
- .pipe(browserSync.reload({ stream: true }))
-});
-
-gulp.task('watch', gulp.series('styles', 'js', 'browser-sync'), function() {
- gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['styles']);
- gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
- gulp.watch('app/*.html', browserSync.reload)
-});
-
-gulp.task('default', gulp.series('watch'));
+gulp.task('default', gulp.series('serve'));
