@@ -28,6 +28,10 @@
     text-decoration: none
     color: $dark
     font-size: 20px
+  .svg-header
+    margin: 0
+    position: absolute
+    display: block
 
 .header-content
   background-color: $gray
@@ -96,7 +100,7 @@
 section
   position: relative
   text-align: left
-  padding: 75px 15% 88px $gutter
+  padding: 75px 30% 88px $gutter
   h2
     color: $dark
     font-family: Ubuntu-bold-grid
@@ -154,6 +158,7 @@ section
   a
     font-size: 24px
     color: #0da088
+    white-space: nowrap
   p
     line-height: 36px
     padding-left: 35px
@@ -196,6 +201,7 @@ section
     font-weight: 400
     line-height: 24px
     letter-spacing: 0.4px
+    white-space: normal
   p
     color: $dark
     font-family: Ubuntu-grid
@@ -203,6 +209,7 @@ section
     font-weight: 400
     line-height: 24px
     margin-bottom: 104px
+    white-space: nowrap
   span
     font-family: Ubuntu-bold-grid
     font-size: 24px
@@ -227,6 +234,7 @@ section
     margin-bottom: -50px
 
 .social-channels
+  padding-right: 15%
   h3
     color: $dark
     font-family: Ubuntu-grid
@@ -235,9 +243,9 @@ section
     line-height: 24px
     margin: 0 0 85px 0
   .container
-    grid-template-columns: repeat(3, 1fr)
-    grid-template-rows: 100px 100px 100px
-    grid-auto-flow: column
+    grid-gap: 25px
+    grid-template-columns: repeat(auto-fit, minmax(200px, 250px))
+    grid-template-rows: repeat(2, 80px)
     a
       margin: 0
       padding-left: 60px
@@ -247,6 +255,8 @@ section
       font-weight: 400
       line-height: 24px
       text-decoration: underline
+      display: inline-block
+      text-align: left
     .icon-social
       display: block
       margin-bottom: -40px
