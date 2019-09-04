@@ -90,7 +90,6 @@
 	    font-weight: 400
 	    line-height: 24px
 	    margin-bottom: 104px
-	    white-space: nowrap
 	  span
 	    font-family: Ubuntu-bold-grid
 	    font-size: 18px
@@ -100,13 +99,8 @@
 	    padding-left: 0
 	    li
 	      list-style-type: none
-	  .button
-	    margin-bottom: 0
 	  .button-dark
 	    background-color: #3b4269
-	  .icon
-	    display: block
-	    margin-bottom: -50px
 	.main-footer
 	  .container
 	    p
@@ -116,7 +110,7 @@
 	      font-size: 18px
 			span
 				font-size: 14px
-	.set-html
+	.set-html, .app-install
 		a
 			margin-right: 0
 
@@ -124,8 +118,94 @@
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px)
-	/**/
+	.social-channels
+	  .container
+			.social-item
+				height: 80px
+	.header-content
+		padding: 80px 10% 0
+	section
+		padding-right: 10%
+		padding-left: 10%
 
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 680px)
+	.main-header
+		ul
+			display: none
+		.hamburger
+			display: block
+	.header-content
+	  h1
+	    margin-bottom: 66px
+	    font-size: 48px
+	  p
+	    margin-bottom: 59px
+	    color: #74757b
+	    font-size: 26px
+	    line-height: 36px
+	.button
+		font-size: 22px
+		font-weight: 700
+		line-height: 26.18px
+		letter-spacing: 2.75px
+		padding: 25px 60px
+		border-radius: 35px
+		&.button-gray
+			padding: 25px 185px
+			border-radius: 35px
+
+	section
+	  h2
+	    font-size: 48px
+	    letter-spacing: 2.4px
+	    line-height: 50px
+	  a
+	    font-size: 26px
+	    letter-spacing: 0.65px
+	    margin-right: 135px
+			letter-spacing: 0.4px
+	  p
+	    font-size: 26px
+	    font-weight: 400
+	    line-height: 36px
+
+	.app-install a, .set-html a
+		font-size: 30px
+		white-space: normal
+
+	.after-install
+	  .description
+	    font-size: 24px
+	    letter-spacing: 0.6px
+	  p
+	    font-size: 24px
+	    font-weight: 400
+	  span
+	    font-size: 24px
+	  a
+	    font-size: 20px
+	    line-height: 26px
+	  .button-dark
+			padding: 25px 120px
+
+	.after-install p
+		white-space: normal
+		line-height: 50px
+
+	.social-channels
+	  h3
+	    font-size: 24px
+	    font-weight: 400
+	    line-height: 24px
+			letter-spacing: 0.6px
+	  .container
+	    a
+	      font-size: 24px
+
+	.main-footer
+	  padding: 40px 20px
 
 
 

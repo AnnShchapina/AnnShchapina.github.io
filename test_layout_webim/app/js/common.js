@@ -1,4 +1,5 @@
-let a = 1;
-
-$(function() {
+$(document).ready(function(){
+	$('.hamburger').click(function(){
+		$(this).toggleClass('open');
+	});
 });
