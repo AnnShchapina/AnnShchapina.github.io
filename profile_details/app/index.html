@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<title>Title</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+</head>
+
+<body>
+
+	<header class="main-header">
+		<div class="main-header__icon-logo">
+			<svg width="65px" height="22px"><use xlink:href="images/img.svg#logo__legacy_icon"></use></svg>
+		</div>
+		<div class="main-header__photo-profile"></div>
+		<div class="main-header__dropdown">
+			<p><span class="main-header__name">Jhon</span><br>Wrike Team</p>
+			<button class="main-header__button">
+				<img src="img/down-semibold_icon.svg" alt="">
+			</button>
+			<div class="main-header__dropdown-child">
+				<span class="main-header__dropdown__team">Wrike Team</span>
+				<a href="#">Profile Settings</a>
+				<a href="#">Team directory</a>
+				<a href="#">Apps & Integrations</a>
+				<a href="#">Mobile apps</a>
+				<a href="#">Help</a>
+				<hr class="main-header__line">
+				<a href="#">Log Out</a>
+			</div>
+		</div>
+	</header>
+
+	<section class="right-menu">
+		<ul class="right-menu__list">
+			<li><img src="img/user-small_icon.svg" alt=""><span>PERSONAL SETTINGS</span></li>
+			<li><button class="right-menu__button" type="button">Profile details</button></li>
+			<li><button class="right-menu__button" type="button">Account info</button></li>
+			<li><button class="right-menu__button" type="button">Email preferences</button></li>
+			<li><button class="right-menu__button" type="button">Work schedule</button></li>
+			<li><button class="right-menu__button" type="button">Password & security</button></li>
+			<li><button class="right-menu__button" type="button">Apps access</button></li>
+		</ul>
+		<hr class="right-menu__line">
+		<ul class="right-menu__list">
+			<li><img src="img/settigns-gearwheel_icon.svg" alt=""><span>ACCOUNT MANAGMENT</span></li>
+			<li><button class="right-menu__button" type="button">Subscription</button></li>
+			<li><button class="right-menu__button" type="button">Billing</button></li>
+			<li><button class="right-menu__button" type="button">Users & groups</button></li>
+			<li><button class="right-menu__button" type="button">Request form builder</button></li>
+			<li><button class="right-menu__button" type="button">Custom workflows</button></li>
+			<li><button class="right-menu__button" type="button">Activity reports</button></li>
+			<li><button class="right-menu__button" type="button">Calendars</button></li>
+			<li><button class="right-menu__button" type="button">Account settings</button></li>
+			<li><button class="right-menu__button" type="button">Advanced security</button></li>
+		</ul>
+	</section>
+
+	<section class="profile-details">
+		<h1>Profile details</h1>
+		<div class="profile-details__container">
+			<div class="profile-details__photo">
+				<a class="profile-details__photo__link" href="#">upload</a>
+				<div class="profile-details__photo__background"></div>
+			</div>
+			<div class="profile-details__description">
+				<h2>Jhon Smith</h2>
+				<p>UI developer (crafting Team)</p>
+			</div>
+		</div>
+		<form class="profile-details__form" action="index.html" method="post">
+			<label>First name<input type="text" placeholder="First name" name="firstname" value="Jhon" required></label>
+			<label>Last name<input type="text" placeholder="Last name" name="lastname" value="Smith" required></label>
+			<label>Company name<input type="text" placeholder="Company" name="companyname" value="Wrike" required></label>
+			<label>Job title<input type="text" placeholder="Job title" name="jobtitle" value="UI Developer (crafting team)" required></label>
+			<label>Location<input type="text" placeholder="Location" name="location" value="Saint-Petersburg" required></label>
+			<label>Phone number<input type="text" placeholder="+X (XXX) XXX-XX-XX" name="phonenumber" value="+7 (923) 345-34-32"	pattern="[\+]\d{1}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}" minlength="18" maxlength="18" required></label>
+			<div class="profile-details__buttons">
+				<input type="submit" value="Save changes"></input>
+				<input type="reset" value="Cancel"></input>
+			</div>
+		</form>
+	</section>
+
+	<section class="workspace-settings">
+		<h2>Workspace settings</h1>
+		<form class="workspace-settings__form" action="index.html" method="post">
+			<div class="workspace-settings__form__container">
+				<label for="time_zone">Time zone</label>
+					<select id="time_zone">
+			      <option>(GMT+7) Pacific day time</option>
+						<option>(GMT-07:00) Pacific Time (US & Canada)</option>
+						<option>(GMT-06:00) Mountain Time (US & Canada)</option>
+						<option>(GMT+03:00) Moscow</option>
+						<option>(GMT-11:00) Midway Island</option>
+						<option>(GMT-11:00) Samoa</option>
+						<option>(GMT-10:00) Hawaii</option>
+						<option>(GMT-08:00) Alaska</option>
+						<option>(GMT-07:00) Arizona</option>
+						<option>(GMT-07:00) Baja</option>
+						<option>(GMT-07:00) Chihuahua</option>
+						<option>(GMT-07:00) Los Angeles</option>
+						<option>(GMT-07:00) Mazatlan</option>
+						<option>(GMT-07:00) Pacific Time (US & Canada)</option>
+						<option>(GMT-07:00) Tijuana</option>
+						<option>(GMT-06:00) Guatemala City</option>
+						<option>(GMT-06:00) Managua (Nicaragua)</option>
+						<option>(GMT-06:00) Mexico City</option>
+						<option>(GMT-06:00) Monterrey</option>
+						<option>(GMT-06:00) Mountain Time (US & Canada)</option>
+						<option>(GMT-06:00) San José (Costa Rica)</option>
+						<option>(GMT-06:00) San Salvador</option>
+						<option>(GMT-06:00) Saskatchewan</option>
+						<option>(GMT-06:00) Tegucigalpa (Honduras)</option>
+						<option>(GMT-05:00) Bogota</option>
+			    </select>
+			</div>
+			<div class="workspace-settings__form__container">
+				<label for="language">Language</label>
+					<select id="language">
+						<option>English</option>
+						<option>Deutsch</option>
+						<option>Español</option>
+						<option>Français</option>
+						<option>Italiano</option>
+						<option>Português (Brasil)
+						<option>Русский</option>
+						<option>日本語</option>
+						<option>中文 (中国)</option>
+					</select>
+			</div>
+			<div class="workspace-settings__form__container">
+				<label for="task_status">New task created by default as</label>
+					<select id="task_status">
+						<option>Backlogged</option>
+						<option>Starting today</option>
+					</select>
+			</div>
+		</form>
+		<div class="workspace-settings__checkbox">
+			<input class="workspace-settings__input" type="checkbox" id="showPopUp">
+			<label class="workspace-settings__label" for="showPopUp">Show pop-up with suggestion to align the <br>dates of tasks and subtasks.</label>
+			<a class="workspace-settings__link" href="#">How does subtask alignment work?</a>
+			<input class="workspace-settings__button" type="submit" value="Save settings"></input>
+		</div>
+	</section>
+
+
+	<link rel="stylesheet" href="css/main.min.css">
+	<script src="js/scripts.min.js"></script>
+
+</body>
+</html>
